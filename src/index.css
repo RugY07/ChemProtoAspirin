@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark Biotech/Chemistry Laboratory Design System */
+
+@layer base {
+  :root {
+    /* Background Colors */
+    --background: 210 20% 8%; /* #0B1116 */
+    --foreground: 185 30% 95%; /* #EAF6F7 */
+
+    --card: 210 25% 15%; /* #162A31 */
+    --card-foreground: 185 30% 95%;
+
+    --popover: 210 25% 15%;
+    --popover-foreground: 185 30% 95%;
+
+    /* Primary - Cyan */
+    --primary: 185 65% 55%; /* #39C6D6 */
+    --primary-foreground: 210 20% 8%;
+
+    /* Secondary - Muted Cyan */
+    --secondary: 210 25% 20%; /* #101C22 */
+    --secondary-foreground: 185 25% 85%; /* #B7C9CC */
+
+    /* Muted */
+    --muted: 210 15% 35%; /* #7A8E93 */
+    --muted-foreground: 185 20% 70%;
+
+    /* Accent - Purple */
+    --accent: 255 60% 60%; /* #6E4BD8 */
+    --accent-foreground: 185 30% 95%;
+
+    /* Status Colors */
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 185 30% 95%;
+    
+    --success: 150 60% 50%;
+    --success-foreground: 185 30% 95%;
+    
+    --warning: 45 80% 55%;
+    --warning-foreground: 210 20% 8%;
+
+    /* UI Elements */
+    --border: 195 30% 20%; /* #1E3A40 */
+    --input: 210 25% 15%;
+    --ring: 185 65% 55%;
+
+    --radius: 0.75rem;
+
+    /* Section Background */
+    --section-bg: 210 25% 12%; /* #101C22 */
+  }
+
+  .dark {
+    --background: 210 20% 8%;
+    --foreground: 185 30% 95%;
+
+    --card: 210 25% 15%;
+    --card-foreground: 185 30% 95%;
+
+    --popover: 210 25% 15%;
+    --popover-foreground: 185 30% 95%;
+
+    --primary: 185 65% 55%;
+    --primary-foreground: 210 20% 8%;
+
+    --secondary: 210 25% 20%;
+    --secondary-foreground: 185 25% 85%;
+
+    --muted: 210 15% 35%;
+    --muted-foreground: 185 20% 70%;
+
+    --accent: 255 60% 60%;
+    --accent-foreground: 185 30% 95%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 185 30% 95%;
+
+    --success: 150 60% 50%;
+    --success-foreground: 185 30% 95%;
+
+    --warning: 45 80% 55%;
+    --warning-foreground: 210 20% 8%;
+
+    --border: 195 30% 20%;
+    --input: 210 25% 15%;
+    --ring: 185 65% 55%;
+
+    --section-bg: 210 25% 12%;
+  }
+}
+
+@layer base {
+  html {
+    /* Overall scaling for laptop/desktop readability */
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    @apply antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Cards */
+  .glass-card {
+    @apply bg-[#162A31]/40 backdrop-blur-xl border border-[#1E3A40]/50 rounded-xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+                0 0 0 1px rgba(57, 198, 214, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-section {
+    @apply bg-[#101C22]/60 backdrop-blur-xl border border-[#1E3A40]/50 rounded-xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Soft Glow Effects */
+  .glow-primary {
+    box-shadow: 0 0 20px rgba(57, 198, 214, 0.3),
+                0 0 40px rgba(57, 198, 214, 0.1);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px rgba(110, 75, 216, 0.3),
+                0 0 40px rgba(110, 75, 216, 0.1);
+  }
+
+  /* Neon Cyan Hover States */
+  .neon-hover {
+    @apply transition-all duration-300;
+  }
+
+  .neon-hover:hover {
+    box-shadow: 0 0 15px rgba(57, 198, 214, 0.5),
+                0 0 30px rgba(57, 198, 214, 0.2);
+    border-color: rgba(57, 198, 214, 0.5);
+  }
+
+  /* Button Glow */
+  .btn-glow {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+
+  .btn-glow::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: radial-gradient(circle, rgba(57, 198, 214, 0.4) 0%, transparent 70%);
+  }
+
+  .btn-glow:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 20px rgba(57, 198, 214, 0.4),
+                0 0 40px rgba(57, 198, 214, 0.2);
+  }
+
+  /* Gradient Overlays */
+  .gradient-overlay {
+    background: linear-gradient(135deg, 
+      rgba(57, 198, 214, 0.1) 0%, 
+      rgba(110, 75, 216, 0.1) 100%);
+  }
+
+  /* Neural Network Pattern */
+  .neural-pattern {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(57, 198, 214, 0.15) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+
+  /* Smooth Transitions */
+  .smooth-transition {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* High Contrast Accessibility */
+  .high-contrast-text {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Lab Container - Beaker/Flask */
+  .lab-container {
+    background: linear-gradient(180deg, 
+      rgba(57, 198, 214, 0.15) 0%, 
+      rgba(22, 42, 49, 0.4) 50%,
+      rgba(16, 28, 34, 0.5) 100%);
+    backdrop-filter: blur(8px);
+    border-radius: 0 0 1.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+      inset 0 2px 20px rgba(57, 198, 214, 0.2),
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 0 0 2px rgba(57, 198, 214, 0.3);
+  }
+
+  .lab-glow {
+    box-shadow: 
+      inset 0 2px 20px rgba(57, 198, 214, 0.3),
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 0 0 2px rgba(57, 198, 214, 0.4),
+      0 0 30px rgba(57, 198, 214, 0.2);
+  }
+
+  .liquid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: all 1s ease-out;
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
+}
+
+@layer utilities {
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #39C6D6 0%, #2FA7B8 100%);
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #6E4BD8 0%, #5A3BB8 100%);
+  }
+
+  .bg-gradient-primary {
+    background-image: linear-gradient(135deg, #39C6D6 0%, #2FA7B8 100%);
+  }
+
+  .bg-gradient-accent {
+    background-image: linear-gradient(135deg, #6E4BD8 0%, #5A3BB8 100%);
+  }
+
+  .shadow-glow-primary {
+    box-shadow: 0 0 20px rgba(57, 198, 214, 0.3),
+                0 0 40px rgba(57, 198, 214, 0.1);
+  }
+
+  .shadow-glow-accent {
+    box-shadow: 0 0 20px rgba(110, 75, 216, 0.3),
+                0 0 40px rgba(110, 75, 216, 0.1);
+  }
+}
